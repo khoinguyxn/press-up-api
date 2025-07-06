@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PressUpAspireApp.AppHost", "PressUpAspireApp.AppHost\PressUpAspireApp.AppHost.csproj", "{28BECFBD-EE18-4E2D-97F9-B85F962F3D32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PressUpAspireApp.ServiceDefaults", "PressUpAspireApp.ServiceDefaults\PressUpAspireApp.ServiceDefaults.csproj", "{13817FE1-7E9D-4A1C-93C6-1048E6712AC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PressUpAspireApp.Api", "PressUpAspireApp.Api\PressUpAspireApp.Api.csproj", "{74B771D0-9C04-4531-9B81-E13E43CD2865}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28BECFBD-EE18-4E2D-97F9-B85F962F3D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28BECFBD-EE18-4E2D-97F9-B85F962F3D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28BECFBD-EE18-4E2D-97F9-B85F962F3D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28BECFBD-EE18-4E2D-97F9-B85F962F3D32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13817FE1-7E9D-4A1C-93C6-1048E6712AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13817FE1-7E9D-4A1C-93C6-1048E6712AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13817FE1-7E9D-4A1C-93C6-1048E6712AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13817FE1-7E9D-4A1C-93C6-1048E6712AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B771D0-9C04-4531-9B81-E13E43CD2865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B771D0-9C04-4531-9B81-E13E43CD2865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B771D0-9C04-4531-9B81-E13E43CD2865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B771D0-9C04-4531-9B81-E13E43CD2865}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

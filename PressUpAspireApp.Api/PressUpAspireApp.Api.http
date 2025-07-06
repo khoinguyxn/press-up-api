@@ -1,0 +1,6 @@
+@PressUpAspireApp.Api_HostAddress = http://localhost:5268
+
+GET {{PressUpAspireApp.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
