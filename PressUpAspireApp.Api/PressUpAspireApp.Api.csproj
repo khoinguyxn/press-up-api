@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>6439a269-e69c-492d-b9c5-51616d564499</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,7 +12,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PressUpAspireApp.ServiceDefaults\PressUpAspireApp.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\PressUpAspireApp.Domain\PressUpAspireApp.Domain.csproj"/>
+        <ProjectReference Include="..\PressUpAspireApp.Infrastructure\PressUpAspireApp.Infrastructure.csproj"/>
+        <ProjectReference Include="..\PressUpAspireApp.ServiceDefaults\PressUpAspireApp.ServiceDefaults.csproj"/>
     </ItemGroup>
 
 </Project>

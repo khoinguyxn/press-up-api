@@ -7,4 +7,4 @@ var mySqlDb = builder.AddMySql("mysql").WithLifetime(ContainerLifetime.Persisten
 builder.AddProject<Projects.PressUpAspireApp_Api>("api").WithHttpHealthCheck("/health").WithReference(mySqlDb)
        .WaitFor(mySqlDb);
 
-builder.Build().Run();
+await builder.Build().RunAsync();
