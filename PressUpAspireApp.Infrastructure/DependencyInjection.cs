@@ -36,6 +36,6 @@ public static class DependencyInjection
 
     private static void AddInfrastructureHealthChecks(IServiceCollection services)
     {
-        services.AddHealthChecks().AddMySql();
+        services.AddHealthChecks().AddMySql().AddDbContextCheck<PressUpApiDbContext>();
     }
 }

@@ -1,3 +1,4 @@
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,13 +28,13 @@ public static class Extensions
         builder.Services.AddServiceDiscovery();
 
         builder.Services.ConfigureHttpClientDefaults(http =>
-                                                     {
-                                                         // Turn on resilience by default
-                                                         http.AddStandardResilienceHandler();
+        {
+            // Turn on resilience by default
+            http.AddStandardResilienceHandler();
 
-                                                         // Turn on service discovery by default
-                                                         http.AddServiceDiscovery();
-                                                     });
+            // Turn on service discovery by default
+            http.AddServiceDiscovery();
+        });
 
         // Uncomment the following to restrict the allowed schemes for service discovery.
         // builder.Services.Configure<ServiceDiscoveryOptions>(options =>
@@ -48,33 +49,33 @@ public static class Extensions
         where TBuilder : IHostApplicationBuilder
     {
         builder.Logging.AddOpenTelemetry(logging =>
-                                         {
-                                             logging.IncludeFormattedMessage = true;
-                                             logging.IncludeScopes = true;
-                                         });
+        {
+            logging.IncludeFormattedMessage = true;
+            logging.IncludeScopes = true;
+        });
 
         builder.Services.AddOpenTelemetry()
-               .WithMetrics(metrics =>
-                            {
-                                metrics.AddAspNetCoreInstrumentation()
-                                       .AddHttpClientInstrumentation()
-                                       .AddRuntimeInstrumentation();
-                            })
-               .WithTracing(tracing =>
-                            {
-                                tracing.AddSource(builder.Environment.ApplicationName)
-                                       .AddAspNetCoreInstrumentation(instrumentationOptions =>
-                                                                         // Exclude health check requests from tracing
-                                                                         instrumentationOptions.Filter = context =>
-                                                                             !context.Request.Path
-                                                                                .StartsWithSegments(HealthEndpointPath)
-                                                                          && !context.Request.Path
-                                                                                .StartsWithSegments(AlivenessEndpointPath)
-                                                                    )
-                                        // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
-                                        //.AddGrpcClientInstrumentation()
-                                       .AddHttpClientInstrumentation();
-                            });
+            .WithMetrics(metrics =>
+            {
+                metrics.AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddRuntimeInstrumentation();
+            })
+            .WithTracing(tracing =>
+            {
+                tracing.AddSource(builder.Environment.ApplicationName)
+                    .AddAspNetCoreInstrumentation(instrumentationOptions =>
+                        // Exclude health check requests from tracing
+                        instrumentationOptions.Filter = context =>
+                            !context.Request.Path
+                                .StartsWithSegments(HealthEndpointPath)
+                            && !context.Request.Path
+                                .StartsWithSegments(AlivenessEndpointPath)
+                    )
+                    // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
+                    //.AddGrpcClientInstrumentation()
+                    .AddHttpClientInstrumentation();
+            });
 
         builder.AddOpenTelemetryExporters();
     }
@@ -101,23 +102,27 @@ public static class Extensions
         where TBuilder : IHostApplicationBuilder
     {
         builder.Services.AddHealthChecks()
-                // Add a default liveness check to ensure app is responsive
-               .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
+            // Add a default liveness check to ensure app is responsive
+            .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
     }
 
     public static WebApplication MapDefaultEndpoints(this WebApplication app)
     {
         // Adding health checks endpoints to applications in non-development environments has security implications.
         // See https://aka.ms/dotnet/aspire/healthchecks for details before enabling these endpoints in non-development environments.
-        
+
         // All health checks must pass for app to be considered ready to accept traffic after starting
-        app.MapHealthChecks(HealthEndpointPath);
+        app.MapHealthChecks(HealthEndpointPath, new HealthCheckOptions
+        {
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
 
         // Only health checks tagged with the "live" tag must pass for app to be considered alive
         app.MapHealthChecks(AlivenessEndpointPath, new HealthCheckOptions
-                                                   {
-                                                       Predicate = r => r.Tags.Contains("live")
-                                                   });
+        {
+            Predicate = r => r.Tags.Contains("live"),
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
 
         return app;
     }
