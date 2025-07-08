@@ -1,5 +1,7 @@
+using Carter;
 using PressUpAspireApp.Infrastructure;
 using PressUpAspireApp.ServiceDefaults;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddProblemDetails();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// Add Carter modules
+builder.Services.AddCarter();
+
 // Add infrastructure services
 builder.Services.AddInfrastructure();
 
@@ -23,6 +28,7 @@ app.UseExceptionHandler();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 string[] summaries =
@@ -48,6 +54,8 @@ app.MapGet("/weatherforecast", () =>
     .WithName("GetWeatherForecast");
 
 app.MapDefaultEndpoints();
+
+app.MapCarter();
 
 await app.RunAsync();
 
