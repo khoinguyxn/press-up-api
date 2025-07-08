@@ -1,11 +1,10 @@
-using Carter;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace PressUpAspireApp.Api.Modules;
 
-public class MenuItemModule : ICarterModule
+public static class MenuItemModule
 {
-    public void AddRoutes(IEndpointRouteBuilder app)
+    public static void RegisterMenuItemEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("/menu-items", GetAll).WithName("GetMenuItems");
     }
