@@ -10,7 +10,6 @@ WORKDIR /src
 
 # Copy project files for restore
 COPY ["PressUpAspireApp.Api/PressUpAspireApp.Api.csproj", "PressUpAspireApp.Api/"]
-COPY ["PressUpAspireApp.ServiceDefaults/PressUpAspireApp.ServiceDefaults.csproj", "PressUpAspireApp.ServiceDefaults/"]
 
 RUN dotnet restore "PressUpAspireApp.Api/PressUpAspireApp.Api.csproj"
 
@@ -20,7 +19,6 @@ WORKDIR "/src/PressUpAspireApp.Api"
 RUN dotnet build "./PressUpAspireApp.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
 
 RUN dotnet publish "./PressUpAspireApp.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
