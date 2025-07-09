@@ -12,6 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PressUpAspireApp.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PressUpAspireApp.Infrastructure.Tests", "PressUpAspireApp.Infrastructure.Tests\PressUpAspireApp.Infrastructure.Tests.csproj", "{9A8FDA76-B9DF-460B-AFCF-02880BBDB46D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PressUpAspireApp.Application", "PressUpAspireApp.Application\PressUpAspireApp.Application.csproj", "{08E9075E-EEBA-4E11-ACE2-C08083CD8B54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PressUpAspireApp.Application.Tests", "PressUpAspireApp.Application.Tests\PressUpAspireApp.Application.Tests.csproj", "{EB4B2028-550A-40E7-8C14-75C0C6997209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +46,13 @@ Global
 		{9A8FDA76-B9DF-460B-AFCF-02880BBDB46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A8FDA76-B9DF-460B-AFCF-02880BBDB46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A8FDA76-B9DF-460B-AFCF-02880BBDB46D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E9075E-EEBA-4E11-ACE2-C08083CD8B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E9075E-EEBA-4E11-ACE2-C08083CD8B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E9075E-EEBA-4E11-ACE2-C08083CD8B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E9075E-EEBA-4E11-ACE2-C08083CD8B54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB4B2028-550A-40E7-8C14-75C0C6997209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4B2028-550A-40E7-8C14-75C0C6997209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4B2028-550A-40E7-8C14-75C0C6997209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4B2028-550A-40E7-8C14-75C0C6997209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
