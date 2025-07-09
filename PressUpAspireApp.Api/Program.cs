@@ -1,4 +1,5 @@
 using PressUpAspireApp.Api.Modules;
+using PressUpAspireApp.Application;
 using PressUpAspireApp.Infrastructure;
 using PressUpAspireApp.ServiceDefaults;
 using Scalar.AspNetCore;
@@ -16,6 +17,9 @@ builder.Services.AddOpenApi();
 
 // Add infrastructure services
 builder.Services.AddInfrastructure();
+
+// Add application services
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
